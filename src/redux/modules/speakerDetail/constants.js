@@ -1,0 +1,1 @@
+export const GET_SPEAKER_RESULT = 'GET_SPEAKER_RESULT'
