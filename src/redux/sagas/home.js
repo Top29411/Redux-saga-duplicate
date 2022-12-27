@@ -10,6 +10,5 @@ const doGetTopics =  apiCall(  {
 
 
 export default function* rootSaga() {
-  // yield takeLatest(CONSTANTS.GET_TOPIC_LIST, calc)
   yield takeLatest(CONSTANTS.GET_TOPIC_LIST, doGetTopics)
 }
