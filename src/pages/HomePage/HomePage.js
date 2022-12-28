@@ -16,7 +16,8 @@ import { topicListSelector } from 'redux/modules/home/selectors'
 const HomePage = () => {
   const history = useHistory()
   const dispatch = useDispatch()
-  const topics = useSelector(topicListSelector)
+  const topics = useSelector(topicListSelector) 
+  const [searchMenu , setSearchMenu] = useState('')
 
   useEffect(() => {
     dispatch(getTopics())
@@ -26,13 +27,20 @@ const HomePage = () => {
     history.push(`/${item.replace(/"/g, '')}`)
   }
 
+
+  const returnNewSearch = (e) =>{
+    if(e == '13') handleClick(searchMenu) ;
+  }
+
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', pt: 10 }}>
       <Box sx={{ display: 'flex', justifyContent: 'center', mb: 10 }}><img src={Logo} alt="" /></Box>
-      <Input
+      <Input 
+        onChange = {(e)=>setSearchMenu(e.target.value)}
+        onKeyPress = {(e)=>returnNewSearch(event.keyCode || event.which)} 
         sx={{ mb: 5 }}
         endAdornment={
-          <InputAdornment position="end">
+          <InputAdornment position="end" >
             <SearchIcon />
           </InputAdornment>
         }

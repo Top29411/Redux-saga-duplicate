@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import { useHistory } from 'react-router'
+
 import {
   Box,
   Input,
@@ -8,11 +10,20 @@ import Logo from 'assets/images/uaroundu_profile_logo.webp'
 import SearchIcon from '@mui/icons-material/Search'
 
 const Header = ({ value }) => {
+  const history = useHistory()
   const [search, setSearch] = useState('')
 
   useEffect(() => {
     setSearch(value)
   }, [value])
+
+  const handleClick = (item) => {
+    history.push(`/${item.replace(/"/g, '')}`)
+  }
+
+  const returnNewSearch = (e) =>{
+    if(e == '13') handleClick(search) ;
+  }
 
   return (
     <Box sx={{ display: 'flex', alignItems: 'center', backgroundColor: 'white', pr: { xs: 2 } }}>
@@ -21,6 +32,8 @@ const Header = ({ value }) => {
       </Box>
       <Input
         value={search}
+        onChange={(e)=>setSearch(e.target.value)}
+        onKeyPress = {(e)=>returnNewSearch(event.keyCode || event.which)} 
         endAdornment={
           <InputAdornment position="end">
             <SearchIcon />
