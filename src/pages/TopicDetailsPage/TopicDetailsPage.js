@@ -73,12 +73,12 @@ const TopicDetailsPage = () => {
       success: () => {
         setIsLoading(false)
         setError(false)
-        console.log('success')
+        // console.log('success')
       },
       fail: () => {
         setIsLoading(true)
         setError(true)
-        console.log('failed')
+        // console.log('failed')
       }
     }))
   }
@@ -125,7 +125,7 @@ const TopicDetailsPage = () => {
                 } */}
                 <Typography variant="medium">Last Time discussed</Typography>
               </Box>
-              <Box sx={{ mb: 10 }}>
+              <Box sx={{ mb: 3 }}>
                 <GoogleAd/>
               </Box>
               <Typography variant='h5' sx={{ mb: 3 }}>Speakers:</Typography>
