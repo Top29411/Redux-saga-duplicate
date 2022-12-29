@@ -34,12 +34,11 @@ const Header = ({ value }) => {
         value={search}
         onChange={(e)=>setSearch(e.target.value)}
         onKeyPress = {(e)=>returnNewSearch(event.keyCode || event.which)} 
-        endAdornment={
-          <InputAdornment position="end">
-            <SearchIcon />
-          </InputAdornment>
-        }
-      />
+        
+        />
+      <Box sx={{cursor:'pointer'}}  onClick={()=>handleClick(search)}>
+        <SearchIcon />
+      </Box>
     </Box>
   )
 }

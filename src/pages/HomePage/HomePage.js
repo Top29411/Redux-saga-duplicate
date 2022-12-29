@@ -27,7 +27,6 @@ const HomePage = () => {
     history.push(`/${item.replace(/"/g, '')}`)
   }
 
-
   const returnNewSearch = (e) =>{
     if(e == '13') handleClick(searchMenu) ;
   }
@@ -35,16 +34,17 @@ const HomePage = () => {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', pt: 10 }}>
       <Box sx={{ display: 'flex', justifyContent: 'center', mb: 10 }}><img src={Logo} alt="" /></Box>
-      <Input 
-        onChange = {(e)=>setSearchMenu(e.target.value)}
-        onKeyPress = {(e)=>returnNewSearch(event.keyCode || event.which)} 
-        sx={{ mb: 5 }}
-        endAdornment={
-          <InputAdornment position="end" >
-            <SearchIcon />
-          </InputAdornment>
-        }
-      />
+      <Box sx={{display:'flex' , width:'100%'}}>
+        <Input 
+          onChange = {(e)=>setSearchMenu(e.target.value)}
+          onKeyPress = {(e)=>returnNewSearch(event.keyCode || event.which)} 
+          sx={{ mb: 5 , width:'100%' }}
+          
+        />
+        <Box sx={{cursor:'pointer'}}  onClick={()=>handleClick(search)}>
+          <SearchIcon />
+        </Box>
+      </Box>
       <Box>
         <Typography sx={{ mb: 4 }}>Top discussed topics in the last 7 days</Typography>
         {topics && Object.values(topics).map((item, index) => (
